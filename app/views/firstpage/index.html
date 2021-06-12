@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Choi_Blog</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <section>
+      <div class="bannerVideo" id="slideShow">
+          <video src="japan_tokyo.mp4" autoplay muted loop class="active"></video>
+          <video src="seoul_myeongdong.mp4" autoplay muted loop></video>
+      </div>
+    <div class="container">
+        <header id="navbar">
+            <a href="#" class="logo">월드</a>
+                <ul>
+                   <li><a href="#" class="active">홈</a></li>
+                   <li><a href="#">데스티네이션</a></li>
+                   <li><a href="#">어바웃</a></li>
+                   <li><a href="#">컨텍트</a></li> 
+                </ul>
+
+         <span class="menuIcon" onclick="toggleMenu();"></span>       
+
+        </header>
+            <div class="content">
+                <div class="bannerText" id="slideShowText">
+                    <div class="active">
+                        <h2>Tokyo</h2>
+                            <p>
+                                チョルギュが住んでいる東京です。
+                            </p>
+                    </div>
+
+                    <div>
+                        <h2>Seoul</h2>
+                            <p>
+                                チョルギュが住んでいたソウルです。
+                            </p>
+                    </div>
+                </div>
+            </div>
+                <ul class="sci"><!--
+                    <li><a href="#"><img src="facebook.png"></a></li>
+                    <li><a href="#"><img src="twitter.png"></a></li>
+                    <li><a href="#"><img src="instagram.png"></a></li>-->
+                </ul>
+                
+                <ul class="controls">
+                    <li onclick='prevSlide(); prevSlideText()'><img src="<%= asset_path 'left.png' %>"></li>
+                    <li onclick='nextSlide(); nextSlideText()'><img src="<%= asset_path 'right.png' %>"></li>
+                </ul>
+
+    </div>
+  </section>
+
+    <script>//화살표 누르면 동영상만 바뀌기
+        const slideShow = document.getElementById('slideShow');
+        const slides = slideShow.getElementsByTagName('video');
+        var index = 0;
+
+        function nextSlide()    {
+            slides[index].classList.remove('active');
+            index = (index + 1) % slides.length;
+            slides[index].classList.add('active');
+        }
+        function prevSlide()    {
+            slides[index].classList.remove('active');
+            index = (index - 1 + slides.length) % slides.length;
+            slides[index].classList.add('active');
+        }
+
+
+//화살표 누르면 글자도 바뀌기
+
+
+        const slideShowText = document.getElementById('slideShowText');
+        const slidesText = slideShowText.getElementsByTagName('div');
+        var indexindex = 0;
+
+        function nextSlideText()    {
+            slidesText[indexindex].classList.remove('active');
+            indexindex = (indexindex + 1) % slidesText.length;
+            slidesText[indexindex].classList.add('active');
+        }
+        function prevSlideText()    {
+            slidesText[indexindex].classList.remove('active');
+            indexindex = (indexindex - 1 + slidesText.length) % slidesText.length;
+            slidesText[indexindex].classList.add('active');
+        }
+
+//메뉴 작업
+        function toggleMenu()   {
+            const menuIcon = document.querySelector('.menuIcon');
+            const navbar = document.getElementById('navbar');
+            menuIcon.classList.toggle('active');
+            navbar.classList.toggle('active');
+        }
+    </script>
+
+</body>
+</html>
